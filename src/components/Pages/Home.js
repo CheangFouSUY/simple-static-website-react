@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Image from '../assets/img/header-bg.jpg';
-
+import GroupServices from './GroupServices';
+import GroupPortfolio from './GroupPortfolio';
+import Team from './Team';
+import GroupClient from './GroupClient';
 class Home extends Component {
     render(){
         return (
@@ -13,6 +16,12 @@ class Home extends Component {
                     showButton={true}
                     image={Image}
                 />
+
+                <GroupServices />
+                <GroupPortfolio />
+                <Team />
+                <GroupClient />
+
             </div>
         )
     }
