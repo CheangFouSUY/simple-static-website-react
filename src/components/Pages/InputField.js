@@ -31,7 +31,7 @@ class InputField extends Component {
                     }
                 <p className="help-block text-danger">
                     {(this.props.touched && this.props.errors) && 
-                        <span>This field is required!!!</span>
+                        <span>{this.props.errors}</span>
                     }
 
                 </p>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import InputField from './InputField';
 import { withFormik } from 'formik';
+import * as Yup from 'yup';
 
 const field ={
     sections:[
@@ -71,18 +72,18 @@ export default withFormik({
         phone:"",
         message:"",
     }),
-    validate: values => {
-        const errors ={};
-        
-        Object.keys(values).map((v) => {
-            if(!values[v]){
-                errors[v] = "Required";
-            }
-        })
+    
+    validationSchema: Yup.object().shape({
+        name: Yup.string().min(3, "Name should be at least 3 characters").required("Name is needed!"),
+        email: Yup.string().email("Invalid Email Format").required("Email is needed!"),
+        phone: Yup.string()
+            .min(10, "Phone Number Not Long Enough!")
+            .max(15, "Phone Number Too Long!")
+            .required("Phone Number is Needed!"),
+        message: Yup.string().min(500, "More detail information is needed")
+            .required("Message is needed!")
+    }),
 
-        return errors;
-
-    },
     handleSubmit: (values, {setSubmitting}) => {
         alert("You have submitted the form", JSON.stringify(values));
     }
